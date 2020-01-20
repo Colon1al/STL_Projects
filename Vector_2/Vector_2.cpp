@@ -7,6 +7,8 @@
 #include <algorithm>
 #include <numeric>
 
+#define TEXT_DIVIDER cout<<endl<<"-----------------------------------------------------"<<endl; 
+
 using namespace std;
 int average(const vector<int>* vec)
 {
@@ -28,7 +30,9 @@ void main()
 	vector<int>::iterator it = copy_if(vec->begin(), vec->end(), vecMod->begin(), [k](int elem) {return elem % k == 0 && elem != 0; });
 	vecMod->resize(it-vecMod->begin());
 	
+	if (vecMod->size())
 	cout << "Average: " << average(vecMod) << endl;
+	else cout << "There aren't any numbers divisible by " << k << endl;
 	delete vecMod;
 
 	vector<int>* vecSave = new vector<int>(*vec);
@@ -41,6 +45,7 @@ void main()
 
 	cout << "First max: " << first_max - vecSave->begin() << endl << "Last max: " << last_max - vecSave->begin() << endl;
 
+	TEXT_DIVIDER
 
 	for (auto it = first_max + 1; it < last_max; it++)
 	{
@@ -48,7 +53,9 @@ void main()
 	}
 	
 	cout << "Before swap" << endl;
-	std::copy(vecSave->begin(), vecSave->end(), std::ostream_iterator<int>(std::cout, " "));
+	copy(vecSave->begin(), vecSave->end(), std::ostream_iterator<int>(std::cout, " "));
+
+	TEXT_DIVIDER
 
 	vector<int>::iterator first_negative = find_if(vecSave->begin(), vecSave->end(), [](int elem) {return elem < 0; });
 	if ((first_negative - vecSave->begin()) % 2 == 0) //+1 because indexing starts from 0
@@ -58,20 +65,31 @@ void main()
 		vecTmp->push_back(*first_negative);
 		copy(vecSave->begin(), first_negative, back_inserter(*vecTmp));
 		cout << endl << "After swap" << endl;
-		std::copy(vecTmp->begin(), vecTmp->end(), std::ostream_iterator<int>(std::cout, " "));
+		copy(vecTmp->begin(), vecTmp->end(), std::ostream_iterator<int>(std::cout, " "));
 	}
 	else
 		cout << "No swap" << endl;
 
+	TEXT_DIVIDER
+
 	remove_if(vecSave->begin(), vecSave->end(), [](int elem) {return elem == 0; });
 
 	cout << endl << "Before sort" << endl;
-	std::copy(vec->begin(), vec->end(), std::ostream_iterator<int>(std::cout, " "));
+	copy(vec->begin(), vec->end(), std::ostream_iterator<int>(std::cout, " "));
+
+	TEXT_DIVIDER
 
 	sort(vec->begin(), (vec->end() - (int)(vec->size() / 2)));
 
 	cout << endl << "After sort" << endl;
-	std::copy(vec->begin(), vec->end(), std::ostream_iterator<int>(std::cout, " "));
+	copy(vec->begin(), vec->end(), std::ostream_iterator<int>(std::cout, " "));
+
+	TEXT_DIVIDER
+
+	int kl;
+	cin >> kl;
+
+	return;
 
 }
 
