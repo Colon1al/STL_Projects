@@ -47,10 +47,15 @@ void main()
 
 	TEXT_DIVIDER
 
-	for (auto it = first_max + 1; it < last_max; it++)
-	{
-		(*it) *= -1;
-	}
+	cout << "Before sign change" << endl;
+	copy(vecSave->begin(), vecSave->end(), std::ostream_iterator<int>(std::cout, " "));
+	TEXT_DIVIDER
+
+	for_each(first_max + 1, last_max, [](int &i) { i *= -1; return; });
+	
+	cout << "After sign change" << endl;
+	copy(vecSave->begin(), vecSave->end(), std::ostream_iterator<int>(std::cout, " "));
+	TEXT_DIVIDER
 	
 	cout << "Before swap" << endl;
 	copy(vecSave->begin(), vecSave->end(), std::ostream_iterator<int>(std::cout, " "));
