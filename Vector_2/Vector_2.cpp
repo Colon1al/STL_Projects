@@ -37,13 +37,10 @@ void main()
 
 	vector<int>* vecSave = new vector<int>(*vec);
 	vector<int>::iterator first_max = max_element(vecSave->begin(), vecSave->end());
-	vector<int>::iterator last_max = first_max;
-	if (first_max < vecSave->end())
-	{
-		last_max = max_element(first_max + 1, vecSave->end());
-	}
+	vector<int>::reverse_iterator last_max = max_element(vecSave->rbegin(), vecSave->rend());
+	
 
-	cout << "First max: " << first_max - vecSave->begin() << endl << "Last max: " << last_max - vecSave->begin() << endl;
+	cout << "First max: " << first_max - vecSave->begin() << endl << "Last max: " << last_max.base() - vecSave->begin() << endl;
 
 	TEXT_DIVIDER
 
@@ -51,7 +48,7 @@ void main()
 	copy(vecSave->begin(), vecSave->end(), std::ostream_iterator<int>(std::cout, " "));
 	TEXT_DIVIDER
 
-	for_each(first_max + 1, last_max, [](int &i) { i *= -1; return; });
+	for_each(first_max + 1, last_max.base(), [](int &i) { i *= -1; return; });
 	
 	cout << "After sign change" << endl;
 	copy(vecSave->begin(), vecSave->end(), std::ostream_iterator<int>(std::cout, " "));
@@ -69,7 +66,7 @@ void main()
 		copy(first_negative + 1, vecSave->end(), back_inserter(*vecTmp));
 		vecTmp->push_back(*first_negative);
 		copy(vecSave->begin(), first_negative, back_inserter(*vecTmp));
-		cout << endl << "After swap" << endl;
+		cout << "After swap" << endl;
 		copy(vecTmp->begin(), vecTmp->end(), std::ostream_iterator<int>(std::cout, " "));
 	}
 	else
@@ -79,14 +76,14 @@ void main()
 
 	remove_if(vecSave->begin(), vecSave->end(), [](int elem) {return elem == 0; });
 
-	cout << endl << "Before sort" << endl;
+	cout << "Before sort" << endl;
 	copy(vec->begin(), vec->end(), std::ostream_iterator<int>(std::cout, " "));
 
 	TEXT_DIVIDER
 
 	sort(vec->begin(), (vec->end() - (int)(vec->size() / 2)));
 
-	cout << endl << "After sort" << endl;
+	cout << "After sort" << endl;
 	copy(vec->begin(), vec->end(), std::ostream_iterator<int>(std::cout, " "));
 
 	TEXT_DIVIDER
