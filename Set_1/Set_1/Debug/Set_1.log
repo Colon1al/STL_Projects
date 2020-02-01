@@ -1,0 +1,14 @@
+﻿  Set_1.cpp
+C:\Users\Admin\Documents\STL_Projects\Set_1\Set_1\Set_1.cpp(12,12): warning C4244:  аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+C:\Users\Admin\Documents\STL_Projects\Set_1\Set_1\Set_1.cpp(54,52): error C2672:  "back_inserter": не найдена соответствующая перегруженная функция
+C:\Users\Admin\Documents\STL_Projects\Set_1\Set_1\Set_1.cpp(54,84): error C2780:  std::back_insert_iterator<_Container> std::back_inserter(_Container &): требует аргументов: 1, имеется: 2
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\xutility(3457): message :   см. объявление "std::back_inserter"
+C:\Users\Admin\Documents\STL_Projects\Set_1\Set_1\Set_1.cpp(54,2): error C2672:  "set_union": не найдена соответствующая перегруженная функция
+C:\Users\Admin\Documents\STL_Projects\Set_1\Set_1\Set_1.cpp(54,85): error C2780:  _DestTy *std::set_union(_InIt1,_InIt1,_InIt2,_InIt2,_DestTy (&)[_DestSize]): требует аргументов: 5, имеется: 4
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\algorithm(3954): message :   см. объявление "std::set_union"
+C:\Users\Admin\Documents\STL_Projects\Set_1\Set_1\Set_1.cpp(54,85): error C2780:  _OutIt std::set_union(_InIt1,_InIt1,_InIt2,_InIt2,_OutIt): требует аргументов: 5, имеется: 4
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\algorithm(3947): message :   см. объявление "std::set_union"
+C:\Users\Admin\Documents\STL_Projects\Set_1\Set_1\Set_1.cpp(54,85): error C2780:  _DestTy *std::set_union(_InIt1,_InIt1,_InIt2,_InIt2,_DestTy (&)[_DestSize],_Pr): требует аргументов: 6, имеется: 4
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\algorithm(3939): message :   см. объявление "std::set_union"
+C:\Users\Admin\Documents\STL_Projects\Set_1\Set_1\Set_1.cpp(54,85): error C2780:  _OutIt std::set_union(_InIt1,_InIt1,_InIt2,_InIt2,_OutIt,_Pr): требует аргументов: 6, имеется: 4
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.21.27702\include\algorithm(3907): message :   см. объявление "std::set_union"
