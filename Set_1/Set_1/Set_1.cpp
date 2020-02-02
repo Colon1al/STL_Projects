@@ -2,6 +2,7 @@
 #include <set>
 #include <time.h>
 #include <algorithm>
+#include <vector>
 
 
 using namespace std;
@@ -9,9 +10,7 @@ using namespace std;
 
 int main()
 {
-	srand(time(NULL));
-
-	set<int> S, A, B,res1,res2,buffer;
+	set<int> S, A, B;
 
 	int N, ia, ib;
 
@@ -48,28 +47,31 @@ int main()
 	for_each(B.begin(), B.end(), [](int a) {cout << "  Element: " << a << endl; return; });
 
 
-
+	vector<int> res1, res2, buffer1,buffer2;
 	//first
 
-	set_union(A.begin(), A.end(), B.begin(), B.end(), back_inserter(res1,res1.rbegin()));
+	set_union(A.begin(), A.end(), B.begin(), B.end(), back_inserter(res1));
 
 	//second
 
-	set_symmetric_difference(S.begin(), S.end(), A.begin(), A.end(), back_inserter(buffer));
+	set_symmetric_difference(S.begin(), S.end(), A.begin(), A.end(), back_inserter(buffer1));
 	A.clear();
 
-	set_symmetric_difference(S.begin(), S.end(), B.begin(), B.end(), back_inserter(A));
+	set_symmetric_difference(S.begin(), S.end(), B.begin(), B.end(), back_inserter(buffer2));
 
 	
-	set_intersection(A.begin(), A.end(), buffer.begin(), buffer.end(), back_inserter(res2));
+	set_intersection(buffer2.begin(), buffer2.end(), buffer1.begin(), buffer1.end(), back_inserter(res2));
+	buffer1.clear();
+	buffer2.clear();
 
+	set_symmetric_difference(S.begin(), S.end(), res2.begin(), res2.end(), back_inserter(buffer2));
 
 	cout << "Res1:" << endl;
-	for_each(res2.begin(), res2.end(), [](int a) {cout << "  Element: " << a << endl; return; });
+	for_each(res1.begin(), res1.end(), [](int a) {cout << "  Element: " << a << endl; return; });
 
 
 	cout << "Res2:" << endl;
-	for_each(res2.begin(), res2.end(), [](int a) {cout << "  Element: " << a << endl; return; });
+	for_each(buffer2.begin(), buffer2.end(), [](int a) {cout << "  Element: " << a << endl; return; });
 
 }
 
